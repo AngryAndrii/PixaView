@@ -1,3 +1,3 @@
-export const FetchData: any = () => {
-    return 
-}
+export const FetchData = () => {
+  return 'ok';
+};
