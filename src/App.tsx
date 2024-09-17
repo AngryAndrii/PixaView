@@ -1,15 +1,19 @@
-import { FC, useEffect } from "react"
-import { FetchData } from "./axios/fetch"
+import { FC, useEffect } from 'react';
+import { FetchData } from './axios/fetch';
+import SearchComponent from './components/SearchComponent/Search';
+import ImageComponent from './components/ImageComponent/ImageComponent';
+import { Layout } from './components/Layout/Layout';
 
-const App:FC = () => {
+const App: FC = () => {
   useEffect(() => {
-    FetchData()
-  })
+    FetchData();
+  });
   return (
-    <>
-      <h1>Lol</h1>
-    </>
-  )
-}
+    <Layout>
+      <SearchComponent />
+      <ImageComponent />
+    </Layout>
+  );
+};
 
-export default App
+export default App;
