@@ -26,6 +26,4 @@ const fetchImeage = async (
     console.error('Error fetching images:', error);
     return null;
   }
-};
-
 export default fetchImeage;
