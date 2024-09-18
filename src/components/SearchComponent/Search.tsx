@@ -1,10 +1,6 @@
 import { FC, useState } from 'react';
-import {
-  changeEvent,
-  changeHandler,
-  submitEvent,
-  submitHandler,
-} from './types';
+import { changeEvent, changeHandler, submitEvent, submitHandler } from './types';
+import { StyledSearchBar } from './Search.styled';
 
 type Props = {
   getData: (query: string) => void;
@@ -24,22 +20,28 @@ const SearchComponent: FC<Props> = ({ getData }) => {
   };
 
   return (
-    <>
+    <StyledSearchBar>
       <form
-        action=""
+        className='form'
+        action=''
         onSubmit={(ev: submitEvent) => {
           handleOnSubmit(ev);
         }}
       >
-        <input
-          type="text"
-          onChange={(ev: changeEvent): void => {
-            handleOnChange(ev);
-          }}
-        />
-        <button type="submit">Search</button>
+        <div className='input-section'>
+          <input
+            className='input'
+            type='text'
+            onChange={(ev: changeEvent): void => {
+              handleOnChange(ev);
+            }}
+          />
+          <button className='button' type='submit'>
+            Search
+          </button>
+        </div>
       </form>
-    </>
+    </StyledSearchBar>
   );
 };
 

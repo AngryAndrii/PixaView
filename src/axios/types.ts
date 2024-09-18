@@ -1,10 +1,10 @@
 export interface Params {
   orientation?: string;
   per_page: number;
-  image_type: string;
   key: string;
   q: string;
   page?: string;
+  safesearch?: boolean;
 }
 
 export interface resData {

@@ -9,9 +9,7 @@ const fetchImage = async (
   page: number
 ): Promise<resData[] | null> => {
   const paramsForSearch: Params = {
-    orientation: 'horizontal',
     per_page: 20,
-    image_type: 'photo',
     key: API_KEY,
     q: `${query}`,
     page: `${page}`,
