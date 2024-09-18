@@ -8,7 +8,7 @@ interface props {
 const ImageComponent: FC<props> = ({ data }) => {
   return (
     <>
-      {data?.map((el) => {
+      {data?.map(el => {
         return <img src={el.previewURL} alt={el.tags} />;
       })}
     </>
