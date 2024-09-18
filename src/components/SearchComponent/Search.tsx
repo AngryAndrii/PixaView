@@ -1,24 +1,42 @@
 import { FC, useState } from 'react';
+import {
+  changeEvent,
+  changeHandler,
+  submitEvent,
+  submitHandler,
+} from './types';
 
-const SearchComponent: FC = () => {
-  const [query, setQuery] = useState('');
+type Props = {
+  getData: (query: string) => void;
+};
 
-  const search = (ev: React.FormEvent<HTMLFormElement>) => {
+const SearchComponent: FC<Props> = ({ getData }) => {
+  const [query, setQuery] = useState<string>('');
+
+  const handleOnChange: changeHandler = (ev: changeEvent) => {
+    setQuery(ev.target.value);
+  };
+
+  const handleOnSubmit: submitHandler = (ev: submitEvent) => {
     ev.preventDefault();
-    const form = ev.target as HTMLFormElement;
-    const input = form.elements[0] as HTMLInputElement;
-    console.log(input);
+    getData(query);
+    setQuery('');
   };
 
   return (
     <>
       <form
         action=""
-        onSubmit={ev => {
-          search(ev);
+        onSubmit={(ev: submitEvent) => {
+          handleOnSubmit(ev);
         }}
       >
-        <input type="text" />
+        <input
+          type="text"
+          onChange={(ev: changeEvent): void => {
+            handleOnChange(ev);
+          }}
+        />
         <button type="submit">Search</button>
       </form>
     </>
