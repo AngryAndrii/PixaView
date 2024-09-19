@@ -7,16 +7,21 @@ import fetchImage from './axios/fetch';
 
 const App: FC = () => {
   const [images, setImages] = useState<resData[]>([]);
+  const [emptySearch, setEmptySearch] = useState<boolean>(false);
 
   const getData = async (query: string) => {
     const data: resData[] | null = await fetchImage(query, 1);
     setImages(data !== null ? data : []);
   };
 
+  const emptyQuery = (): void => {
+    setEmptySearch(prevstate => !prevstate);
+  };
+
   return (
     <Layout>
-      <SearchComponent getData={getData} />
-      <ImageComponent data={images} />
+      <SearchComponent getData={getData} emptyQuery={emptyQuery} />
+      {emptySearch ? <>no data</> : <ImageComponent data={images} />}
     </Layout>
   );
 };
