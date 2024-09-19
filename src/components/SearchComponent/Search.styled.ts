@@ -44,3 +44,4 @@ export const StyledSearchBar = styled.div`
     background-color: var(--color-grey);
   }
 `;
+
