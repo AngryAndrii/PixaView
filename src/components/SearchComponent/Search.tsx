@@ -16,7 +16,7 @@ const SearchComponent: FC<Props> = ({ getData, emptyQuery }) => {
   const [query, setQuery] = useState<string>('');
 
   const handleOnChange: changeHandler = (ev: changeEvent) => {
-    setQuery(ev.target.value);
+    setQuery(ev.target.value.trim());
   };
 
   const handleOnSubmit: submitHandler = (ev: submitEvent) => {
