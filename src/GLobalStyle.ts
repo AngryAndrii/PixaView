@@ -8,4 +8,5 @@ export const GlobalStyle = createGlobalStyle`
     --color-grey: #7D8E95;
     --color-dark: #344648;
   }
+
 `;
