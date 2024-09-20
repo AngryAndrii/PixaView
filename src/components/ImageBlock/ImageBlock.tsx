@@ -7,13 +7,13 @@ interface props {
   data: resData;
 }
 
-export const ImageBlock: FC<props> = ({ data }) => {
+export const ImageBlock: FC<props> = (({ data }) => {
   return (
     <StyledImageBlock>
       <div className="image-wrapper">
-        <img className='img' src={data.largeImageURL} alt={data.tags} />
+        <img className="img" src={data.largeImageURL} alt={data.tags} />
       </div>
       <Description />
     </StyledImageBlock>
   );
-};
+});

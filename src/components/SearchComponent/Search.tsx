@@ -8,25 +8,23 @@ import {
 import { StyledSearchBar } from './Search.styled';
 
 type Props = {
-  getData: (query: string) => void;
-  emptyQuery: () => void;
+  getData?: (query: string) => void;
+  emptyQuery?: () => void;
+  changeQuery: (q: string) => void;
+  checkAndGet: () => void;
+  query: string;
 };
 
-const SearchComponent: FC<Props> = ({ getData, emptyQuery }) => {
-  const [query, setQuery] = useState<string>('');
+const SearchComponent: FC<Props> = ({query, changeQuery, checkAndGet }) => {
+  
 
   const handleOnChange: changeHandler = (ev: changeEvent) => {
-    setQuery(ev.target.value.trim());
+    changeQuery(ev.target.value.trim());
   };
 
   const handleOnSubmit: submitHandler = (ev: submitEvent) => {
     ev.preventDefault();
-    if (query === '') {
-      emptyQuery();
-    } else {
-      getData(query);
-      setQuery('');
-    }
+    checkAndGet();
   };
 
   return (

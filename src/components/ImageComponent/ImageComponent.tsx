@@ -8,12 +8,13 @@ interface props {
 }
 
 const ImageComponent: FC<props> = ({ data }) => {
+
   return (
     <StyledImageComponent>
-      {/* {data?.map(el => {
-        return <img src={el.previewURL} alt={el.tags} />;
-      })} */}
-      {data?.map(el => {
+      {data?.map((el, i) => {
+        if (i + 1 === data.length) {
+          return <ImageBlock data={el}/>;
+        }
         return <ImageBlock data={el} />;
       })}
     </StyledImageComponent>
