@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { FC } from 'react';
 import { resData } from '../../axios/types';
 import { Description } from '../DesriptionSection/Description';
 import { StyledImageBlock } from './ImageBlock.styled';
@@ -7,9 +7,9 @@ interface props {
   data: resData;
 }
 
-export const ImageBlock = forwardRef<HTMLDivElement, props>(({ data }, ref) => {
+export const ImageBlock: FC<props> = (({ data }) => {
   return (
-    <StyledImageBlock ref={ref}>
+    <StyledImageBlock>
       <div className="image-wrapper">
         <img className="img" src={data.largeImageURL} alt={data.tags} />
       </div>
