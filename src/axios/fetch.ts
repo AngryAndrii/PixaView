@@ -16,7 +16,7 @@ const fetchImage = async (
   };
 
   try {
-    const resp = await axios.get(`${BASE_URL}?`, {
+    const resp = await axios.get(`${BASE_URL}dwdwdwd?`, {
       params: paramsForSearch,
     });
     return resp.data.hits;

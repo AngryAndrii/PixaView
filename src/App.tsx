@@ -24,7 +24,6 @@ const App: FC = () => {
   const emptyQuery = (): void => {
     setEmptySearch(prevstate => !prevstate);
   };
-
   const setNewPage = () => {
     setPage(prev => prev += 1)
   }
