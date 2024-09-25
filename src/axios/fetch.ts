@@ -9,14 +9,14 @@ const fetchImage = async (
   page: number
 ): Promise<resData[] | null> => {
   const paramsForSearch: Params = {
-    per_page: 20,
+    per_page: 10,
     key: API_KEY,
     q: `${query}`,
     page: `${page}`,
   };
 
   try {
-    const resp = await axios.get(`${BASE_URL}dwdwdwd?`, {
+    const resp = await axios.get(`${BASE_URL}?`, {
       params: paramsForSearch,
     });
     return resp.data.hits;
