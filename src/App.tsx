@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import SearchComponent from './components/SearchComponent/Search';
 import ImageComponent from './components/ImageComponent/ImageComponent';
 import { Layout } from './components/Layout/Layout';
@@ -18,11 +18,22 @@ const App: FC = () => {
     if (data !== null && data?.length == 0) {
       console.log('data null');
       setNotFound(true);
+    } else {
+      if (data !== null) {
+        setImages(data);
+      }
     }
-    setImages(prevImages =>
-      data !== null ? [...prevImages, ...data] : prevImages
-    );
   };
+
+  const getDataNotFirstPage = async (query: string) => {
+    const data: resData[] | null = await fetchImage(query, page);
+      if (data !== null) {
+        setImages(prevImages =>
+          data !== null ? [...prevImages, ...data] : prevImages
+        );
+      }
+    }
+  
 
   const emptyQuery = (): void => {
     setEmptySearch(prevstate => !prevstate);
@@ -39,7 +50,7 @@ const App: FC = () => {
     if (query === '') {
       emptyQuery();
     } else {
-      getData(query);
+      getDataNotFirstPage(query);
       // changeQuery('');
     }
   };
@@ -51,7 +62,7 @@ const App: FC = () => {
   return (
     <Layout>
       <StyledApp>
-    <SearchComponent
+        <SearchComponent
           query={query}
           getData={getData}
           changeQuery={changeQuery}
