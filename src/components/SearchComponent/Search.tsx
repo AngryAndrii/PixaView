@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, MutableRefObject } from 'react';
 import {
   changeEvent,
   changeHandler,
